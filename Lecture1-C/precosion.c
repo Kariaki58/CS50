@@ -7,5 +7,6 @@ int main(void)
 	long y = 2;
 	double z = (double) x / (double) y;
 
+	printf("Hello world\n");
 	printf("hello world %.30f\n", z);
 }
