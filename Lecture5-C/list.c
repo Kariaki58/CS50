@@ -1,31 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
-int main(void)
+typedef struct node{
+    int number;
+    struct node *next;
+} node;
+
+int main(int argc, char *argv[])
 {
-    int *list = malloc(3 * sizeof(int));
+    node *list = NULL;
 
-    if (list == NULL)
-        return (1);
-    
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
+    for (int i = 1; i < argc; i++)
+    {
+        int number = atoi(argv[i]);
 
-    int *tmp = realloc(list, 4 * sizeof(int));
-    if (tmp == NULL)
-    {
-        free(list);
-        return (1);
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+            return (1);
+        n->number = number;
+        n->next = NULL;
+
+        n->next = list;
+        list = n;
     }
-    list = tmp;
-    list[3] = 4;
-    
-    for (int i = 0; i < 3; i++)
+    node *ptr = list;
+
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
     {
-        printf("%d\n", list[i]);
+        printf("%d\n", ptr->number);
     }
-    free(list);
+
+    ptr = list;
+    while (ptr != NULL)
+    {
+        node* temp = ptr->next;
+        free(ptr);
+        ptr = temp;
+    }
     return (0);
 }
