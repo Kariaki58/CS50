@@ -3,10 +3,10 @@
 typedef char *string;
 int main(void)
 {
-	string s = "HI!";
+	string text = "HI!";
 
-	printf("%s\n", s);
-	printf("%s\n", s + 1);
-	printf("%s\n", s + 2);
+	printf("%s\n", text);
+	printf("%s\n", text + 1);
+	printf("%s\n", text + 2);
 	return (0);
 }
